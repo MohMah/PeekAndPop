@@ -289,6 +289,14 @@ public class PeekAndPop {
             onGeneralActionListener.onPeek(longClickView, index);
 
         peekLayout.setVisibility(View.VISIBLE);
+        
+		MotionEvent e = MotionEvent.obtain(SystemClock.uptimeMillis(),
+    		SystemClock.uptimeMillis(),
+    		MotionEvent.ACTION_CANCEL,
+    		10, 10, 0);
+		longClickView.onTouchEvent(e);
+		e.recycle();
+
 
         if (Build.VERSION.SDK_INT >= 17 && blurBackground)
             blurBackground();
